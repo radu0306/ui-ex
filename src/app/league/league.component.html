@@ -1,0 +1,29 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="glyphicon glyphicon-sort"></span>{{pageTitle}}</h2>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let league"> {{league.leagueId}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> League Name </th>
+          <td mat-cell *matCellDef="let league"> {{league.leagueName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="short-name">
+          <th mat-header-cell *matHeaderCellDef> League Short Name </th>
+          <td mat-cell *matCellDef="let league"> {{league.leagueShortName}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" [length]="totalElements" showFirstLastButtons></mat-paginator>    
+</main>

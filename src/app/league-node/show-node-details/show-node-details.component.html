@@ -1,0 +1,6 @@
+<p>Node ID: {{currentLeagueNode.nodeId}}</p>
+<p>Node Name: {{currentLeagueNode.nodeName}}</p>
+<p>Leagues:</p> 
+    <ul>
+       <li *ngFor="let league of currentLeagueNode.leagues"><a [routerLink]="['league', league]" class="nav-link">{{league}}</a></li>
+    </ul>

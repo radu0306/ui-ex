@@ -1,0 +1,29 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="glyphicon glyphicon-sort"></span>{{pageTitle}}</h2>
+    <p>Selected country: Romania (ROU)</p>
+    <mat-form-field>
+      <mat-label>League</mat-label>
+      <mat-select [(value)]="selectedLeague" (selectionChange)="onLeagueChange(selectedLeague)">
+        <mat-option *ngFor="let league of leaguesList" [value]="league.leagueId">
+          {{league.leagueName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span style='padding-left: 5%;'></span>
+    <mat-form-field>
+      <mat-label>Club</mat-label>
+      <mat-select [(value)]="selectedClub" [disabled]="selectedLeague === undefined">
+        <mat-option *ngFor="let club of clubsList" [value]="club.clubId">
+          {{club.clubName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</main>

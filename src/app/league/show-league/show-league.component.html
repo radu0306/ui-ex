@@ -1,0 +1,45 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="glyphicon glyphicon-sort"></span>{{pageTitle}}</h2>
+    <p>League ID: {{league.leagueId}}</p>
+    <p>League Node: {{league.leagueNodeName}}</p>
+    <p>League Short Name: {{league.leagueShortName}}</p>
+    
+    <h4>Clubs</h4>
+    <table mat-table [dataSource]="league.leagueClubs">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>FM ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.clubFMId}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="short-name">
+        <th mat-header-cell *matHeaderCellDef> Club Short Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.clubShortName}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Club Name </th>
+        <td mat-cell *matCellDef="let element">{{element.clubName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell *matCellDef="let element">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+        </td>
+      </ng-container>
+    
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</main>
